@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>AfficheurDeNom</title>
+ </head>
+ <body>
+ 
+   <form>
+ 
+     <h1>Formulaire afficheur de nom</h1>
+ 
+     <label for="txtPrenom">Prénom:</label>
+     <input type="text" id="txtPrenom">
+     <br><br>
+
+     <label for="txtNomMilieu">Nom Milieu:</label>
+     <input type="text" id="txtNomMilieu">
+     <br><br>
+
+     <label for="txtNomFamille">Nom Famille:</label>
+     <input type="text" id="txtNomFamille">
+     <br><br>
+ 
+     <input type="button" id="afficheInitiale" onclick="confirmeAfficheInitiale()"  value="Affiche mes initiales"> <br> <br>
+
+     <input type="button" id="afficheNomComplet" onclick="confirmeAfficheNom()"  value="Affiche mon nom au complet"> <br> <br>
+
+    <input type="button" id="afficheNomUtilisateur" onclick="confirmeAfficheUtilisateur()"  value="Affiche mon nom d'utilisateur">  <br> <br>
+ 
+     <div id="divAffiche">
+ 
+     </div>
+ 
+     <script>
+         function confirmeAfficheInitiale() {
+             var prenom = document.getElementById("txtPrenom").value;
+             var nomMilieu = document.getElementById("txtNomMilieu").value;
+             var nomFamille = document.getElementById("txtNomFamille").value;
+
+            console.log("Initiales: " + prenom[0] + "." + nomMilieu[0] + "." + nomFamille[0] + ".")
+         }
+
+        function confirmeAfficheNom() {
+             var prenom = document.getElementById("txtPrenom").value;
+             var nomMilieu = document.getElementById("txtNomMilieu").value;
+             var nomFamille = document.getElementById("txtNomFamille").value;
+
+            console.log("Nom au complet: " + prenom + " " + nomMilieu + " " + nomFamille)
+         }
+
+        function confirmeAfficheUtilisateur() {
+             var prenom = document.getElementById("txtPrenom").value;
+             var nomMilieu = document.getElementById("txtNomMilieu").value;
+             var nomFamille = document.getElementById("txtNomFamille").value;
+
+            console.log("Nom d’utilisateur: " + prenom[0] + nomMilieu[0] + nomFamille)
+         }
+           
+     </script>
+ 
+   </form>
+ 
+ </body>
+</html>
