@@ -37,24 +37,27 @@
              var prenom = document.getElementById("txtPrenom").value;
              var nomMilieu = document.getElementById("txtNomMilieu").value;
              var nomFamille = document.getElementById("txtNomFamille").value;
+             var affiche = document.getElementById("divAffiche");
 
-            document.write("Initiales: " + prenom[0] + "." + nomMilieu[0] + "." + nomFamille[0] + ".")
+            affiche.innerHTML = "Initiales: " + prenom[0] + "." + nomMilieu[0] + "." + nomFamille[0] + "."
          }
 
         function confirmeAfficheNom() {
              var prenom = document.getElementById("txtPrenom").value;
              var nomMilieu = document.getElementById("txtNomMilieu").value;
              var nomFamille = document.getElementById("txtNomFamille").value;
+             var affiche = document.getElementById("divAffiche");
 
-             document.write("Nom au complet: " + prenom + " " + nomMilieu + " " + nomFamille)
+            affiche.innerHTML = "Nom au complet: " + prenom + " " + nomMilieu + " " + nomFamille
          }
 
         function confirmeAfficheUtilisateur() {
              var prenom = document.getElementById("txtPrenom").value;
              var nomMilieu = document.getElementById("txtNomMilieu").value;
              var nomFamille = document.getElementById("txtNomFamille").value;
+             var affiche = document.getElementById("divAffiche");
 
-             document.write("Nom d’utilisateur: " + prenom[0] + nomMilieu[0] + nomFamille)
+            affiche.innerHTML = "Nom d’utilisateur: " + prenom[0] + nomMilieu[0] + nomFamille
          }
            
      </script>
