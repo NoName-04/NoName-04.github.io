@@ -17,10 +17,6 @@
     <input type="button" id="forme2" onclick="confirmeForme2()"  value="Forme #2"> <br> <br>
 
     <input type="button" id="forme3" onclick="confirmeForme3()"  value="Forme #3"> <br> <br>
-
-     <input type="button" id="forme4" onclick="confirmeForme4()"  value="Forme #4"> <br> <br>
-
-      <input type="button" id="forme5" onclick="confirmeForme5()"  value="Forme #5"> <br> <br>
     
      <div id="divAffiche">
  
@@ -28,7 +24,7 @@
  
      <script>
          function confirmeForme1() {
-          var numAsteriques = 12
+          var numAsteriques = 10
           var asteriques = "";
           for(let i=1; i<=numAsteriques; i++) {
             asteriques = asteriques + "*"
@@ -38,6 +34,8 @@
          }
 
         function confirmeForme2() {
+          var affiche = document.getElementById("divAffiche");
+          var message = "";
           var asterisque = "*"
 
           for (let i = 1; i <= 10; i++) {
@@ -45,54 +43,24 @@
          for (let j = 1; j <= i; j++) {
             asterisques = asterisques + "*";
           }
-            var affiche = document.getElementById("divAffiche");
-            affiche.innerHTML = asterisques;
-          } 
+            message = message + asterisques + "<br>"
+            }
+          affiche.innerHTML = message;
          }
 
         function confirmeForme3() {
-          var asterisque = "*"
+          var affiche = document.getElementById("divAffiche");
+          var message = "";
+          var asterisques = "*";
 
           for (let i = 10; i >= 1; i--) {
-           var asterisques = "";
-          for (let j = 1; j <= i; j++) {
-           asterisques = asterisques + "*";
-          }
-            var affiche = document.getElementById("divAffiche");
-            affiche.innerHTML = asterisques;
-          }
-         }
-
-        function confirmeForme4() {
-
-          for (let i = 1; i <= 10; i++) {
             var asterisques = "";
-            var espaces = "";
-          for (let j = 1; j <= i-1; j++) {
-            espaces = espaces + " ";
-          }
-          for (let j = 1; j <= 11-i; j++) {
+            for (let j = 1; j <= i; j++) {
             asterisques = asterisques + "*";
-          }
-            var affiche = document.getElementById("divAffiche");
-            affiche.innerHTML = espaces+asterisques;
-          }
-        }
-
-        function confirmeForme5() {
-
-          for (let i = 1; i <= 10; i++) {
-            var asterisques = "";
-            var espaces = "";
-          for (let j = 1; j <= 10-i; j++) {
-            espaces = espaces + " ";
-          }
-          for (let j = 1; j <= i; j++) {
-            asterisques = asterisques + "*";
-          }
-            var affiche = document.getElementById("divAffiche");
-            affiche.innerHTML =espaces+asterisques;
-          }
+            }
+            message = message + asterisques + "<br>"
+            }
+          affiche.innerHTML = message;
          }
 
      </script>
