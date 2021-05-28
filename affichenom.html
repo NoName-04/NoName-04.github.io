@@ -39,7 +39,7 @@
              var nomFamille = document.getElementById("txtNomFamille").value;
              var affiche = document.getElementById("divAffiche");
 
-            affiche.innerHTML = "Initiales: " + prenom[0] + "." + nomMilieu[0] + "." + nomFamille[0] + "."
+            affiche.innerHTML = "Initiales: " + prenom[0].toUpperCase() + "." + nomMilieu[0].toUpperCase() + "." + nomFamille[0].toUpperCase() + "."
          }
 
         function confirmeAfficheNom() {
@@ -57,7 +57,7 @@
              var nomFamille = document.getElementById("txtNomFamille").value;
              var affiche = document.getElementById("divAffiche");
 
-            affiche.innerHTML = "Nom d’utilisateur: " + prenom[0] + nomMilieu[0] + nomFamille
+            affiche.innerHTML = "Nom d’utilisateur: " + prenom[0].toLowerCase() + nomMilieu[0].toLowerCase() + nomFamille.toLowerCase()
          }
            
      </script>
