@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Madlibs</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+  <form> 
+
+    <h1>MadLibs</h1>
+
+     <label for="txtNom">Insérez un nom:</label>
+     <input type="text" id="txtNom">
+     <br><br>
+
+     <label for="txtProfession">Insérez une profession:</label>
+     <input type="text" id="txtProfession">
+     <br><br>
+
+     <label for="txtNombre">Insérez un nombre:</label>
+     <input type="text" id="txtNombre">
+     <br><br>
+
+     <label for="txtVerbe">Insérez un verb:</label>
+     <input type="text" id="txtVerbe">
+     <br><br>
+
+     <label for="txtAverbe">Insérez un adverbe:</label>
+     <input type="text" id="txtAdverbe">
+     <br><br>
+
+     <input type="button" id="afficheMadlibs" onclick="confirmeMadlibs()"  value="Afficher votre Madlibs">  
+
+     <div id="divAffiche"> </div>
+ 
+    <script> 
+
+      function confirmeMadlibs() {
+        var nom = document.getElementById("txtNom").value;
+        var profession = document.getElementById("txtProfession").value;
+        var nombre = document.getElementById("txtNombre").value;
+        var verbe = document.getElementById("txtVerbe").value;
+        var adverbe = document.getElementById("txtAdverbe").value;
+        var affiche = document.getElementById("divAffiche");
+
+        affiche.innerHTML = "<br>" + nom + " vient de se faire offrir un nouvel emploi en tant que " + profession + ", ce qui rapporte " + nombre + " dollars par semaine. Votre travail vous oblige à " + verbe + " " + adverbe + " qui n'est pas amusant!"
+      }
+
+    </script>
+
+  
+  </form> 
+    
+  </body>
+</html>
