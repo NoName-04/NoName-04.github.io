@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>CommerceEnLigne</title>
+ </head>
+ <body>
+ 
+   <form>
+ 
+     <h1><center><em>La Racine </em></center></h1>
+
+     <p>Bienvenue au Restaurant <em> La Racine </em> en ligne. C'est un favori local depuis plus de 20 ans. Mettant en vedette nos célèbres sauces à spaghetti et notre célèbre sushi. De délicieux plats italiens faits maison, avec des fruits de mer, des steaks et des pâtes. Alors,ce voici les items dans le menu pour ce mois ci:
+      <ul>
+          <li>Sushi à 30$</li>
+          <li>Pizza à 25$</li>
+          <li>Poulet fri à 20$ </li>
+          <li>Spaghetti à 15$</li>
+          <li>Hamburger avec frites pour 10$</li>
+      </ul>
+     <img src="http://static1.squarespace.com/static/518ea9e4e4b0eb1ecff22776/518ea9e5e4b0eb1ecff2277a/58768871f5e231cc32548478/1536167840749/shutterstock_553173229.jpg?format=1500w" width="300">
+     </p>
+
+     <label for="question4">Indiquer quelle item vous vouliez. Illimité.</label> <br>
+     <input type="checkbox" name="item" value="Sushi" checked>Sushi
+     <input type="checkbox" name="item" value="Pizza"> Pizza
+     <input type="checkbox" name="item" value="Poulet fri"> Poulet fri
+     <input type="checkbox" name="item" value="Spaghetti" > Spaghetti
+     <input type="checkbox" name="item" value="Hamburger et frite">Hamburger et frite
+     <br><br>
+
+     <label for="quantiteItemSushi">Insérez la quantité pour vos Sushi (Si vous prenez pas l'item mets 0)</label>
+     <input type="text" id="quantiteItemSushi">
+     <br><br>
+
+     <label for="quantiteItemPizza">Insérez la quantité pour vos Pizza</label>
+     <input type="text" id="quantiteItemPizza">
+     <br><br>
+
+     <label for="quantiteItemPoulet">Insérez la quantité pour vos Poulet fri</label>
+     <input type="text" id="quantiteItemPoulet">
+     <br><br>
+
+     <label for="quantiteItemSpaghetti">Insérez la quantité pour vos Spaghetti</label>
+     <input type="text" id="quantiteItemSpaghetti">
+     <br><br>
+
+     <label for="quantiteItemHamburger">Insérez la quantité pour vos Hamburger et frite</label>
+     <input type="text" id="quantiteItemHamburger">
+     <br><br>
+
+      <label for="livraison">Insérez la date que vous voulez vos items</label>
+      <input type="date" id="livraison" name="trip-start"
+       value="2021-06-07" min="2021-06-07" > <br> <br>
+
+      <label for="taxe">Où es-tu situé?</label>
+     <select id="taxe">
+       <option value="Ontario">Ontario</option>
+       <option value="Québec">Québec</option>
+     </select>
+     <br><br>
+
+     <label for="montantArgent">Insérer le montant d'argent que vous utilisez pour payer</label>
+     <input type="text" id="montantArgent">
+     <br><br>
+
+     <input type="button" id="afficheCommande" onclick="confirmeAfficheRecu()"  value="Completer la commande"> <br> <br>
+ 
+     <div id="divMontre"> </div>
+
+     <div id="divAffiche"> </div>
+ 
+     <script>
+
+       function confirmeAfficheRecu() {
+         var affiche = document.getElementById("divAffiche");
+         var montre = document.getElementById("divMontre");
+         var itemQuantiteSushi = parseInt(document.getElementById("quantiteItemSushi").value);
+         var itemQuantitePizza = parseInt(document.getElementById("quantiteItemPizza").value);
+         var itemQuantitePoulet = parseInt(document.getElementById("quantiteItemPoulet").value);
+         var itemQuantiteSpaghetti = parseInt(document.getElementById("quantiteItemSpaghetti").value);
+         var itemQuantiteHamburger = parseInt(document.getElementById("quantiteItemHamburger").value);
+         var livraisonTaxe = document.getElementById("taxe").value 
+         var date = document.getElementById("livraison").value
+         var monnaieDonner = parseFloat(document.getElementById("montantArgent").value);
+       
+         var tblDonneAchat = [
+           ["1. Sushi", itemQuantiteSushi, 30],
+           ["2. Pizza", itemQuantitePizza, 25],
+           ["3. Poulet fri", itemQuantitePoulet, 20],
+           ["4. Spaghetti", itemQuantiteSpaghetti, 15],
+           ["5. Hamburger et frite", itemQuantiteHamburger, 10],
+         ]
+      
+         var prixTotalSushi = tblDonneAchat[0][1] * tblDonneAchat[0][2]
+
+         var prixTotalPizza = tblDonneAchat[1][1] * tblDonneAchat[1][2]
+
+         var prixTotalPoulet = tblDonneAchat[2][1] * tblDonneAchat[2][2]
+
+         var prixTotalSpaghetti = tblDonneAchat[3][1] * tblDonneAchat[3][2]
+
+         var prixTotalHamburger = tblDonneAchat[4][1] * tblDonneAchat[4][2]
+
+         var sousTotalItem = prixTotalSushi + prixTotalPizza + prixTotalPoulet + prixTotalSpaghetti + prixTotalHamburger
+
+         var dateLivraison = new Date(date)
+         var dateActuelle = new Date()
+         var dateFuture = new Date(dateActuelle);
+         dateFuture.setDate(dateFuture.getDate() + 5);
+            if (dateLivraison <= dateFuture) {
+              var prixLivraison = 40
+              } else {
+              var prixLivraison = 15
+              }
+
+         var sousTotal = sousTotalItem + prixLivraison
+
+         var tauxTVH = 0.13
+           if (livraisonTaxe == "Québec") {
+            tauxTVH = 0.15
+          }
+
+         var taxe = sousTotal*tauxTVH
+
+         var total = (taxe + sousTotal) 
+
+         var total2 = total + "$"
+
+        //Les \n et etc n'ont pas marché, j'avais donc besoin d'utiliser les $nbsp qui rend mon code difficile a lire
+         var recu = "********************************************************************* <br> *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  REÇU - La Racine &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*  <br> ********************************************************************* <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tblDonneAchat[0][0] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x" +itemQuantiteSushi + "&nbsp;&nbsp;&nbsp;" + tblDonneAchat[0][2] + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tblDonneAchat[1][0] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x" +itemQuantitePizza + "&nbsp;&nbsp;&nbsp;" + tblDonneAchat[1][2] + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tblDonneAchat[2][0] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x" +itemQuantitePoulet + "&nbsp;&nbsp;&nbsp;" + tblDonneAchat[2][2] + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tblDonneAchat[3][0] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x" + itemQuantiteSpaghetti + "&nbsp;&nbsp;&nbsp;" + tblDonneAchat[3][2] + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + tblDonneAchat[4][0] + "&nbsp;&nbsp;&nbsp;x" +itemQuantiteHamburger + "&nbsp;&nbsp;" + tblDonneAchat[4][2] + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------------------------------------------------------<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sous-total des items &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + sousTotalItem + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Livraison &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + prixLivraison + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sous-total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + sousTotal + "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Taxes   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + taxe +  "<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  TOTAL  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + total2 + "<br>******************************************************************** <br>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Merci pour vote commande - Restaurant La Racine - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * <br>******************************************************************** <br> <br>"
+
+        montre.innerHTML = recu
+
+        if (total > monnaieDonner) {
+          alert("Insérez plus d'argent pour payer la commande")
+         } else {
+           affiche.append("Votre monnaie que je vous rend est : ")
+         }
+
+        var monnaieARendre = Math.round(monnaieDonner * 100) - Math.round(total * 100) 
+
+        while (monnaieARendre > 0) {
+          if (monnaieARendre >= 10000) {
+             affiche.append("100$, ")
+             monnaieARendre -= 10000
+          } else if (monnaieARendre >= 5000) {
+             affiche.append("50$, ")
+             monnaieARendre -= 5000
+          } else if (monnaieARendre >= 2000) {
+            affiche.append("20$, ")
+            monnaieARendre -= 2000
+          } else if (monnaieARendre >= 1000) {
+            affiche.append("10$, ")
+            monnaieARendre -= 1000
+          } else if (monnaieARendre >= 500){
+            affiche.append("5$, ")
+            monnaieARendre -= 500
+          } else if (monnaieARendre >= 200){
+            affiche.append("2$, ")
+            monnaieARendre -= 200
+          } else if (monnaieARendre >= 100) {
+            affiche.append("1$, ")
+            monnaieARendre -= 100;
+          } else if (monnaieARendre >= 25) {
+            affiche.append("25¢, ")
+            monnaieARendre -= 25;
+          } else if (monnaieARendre >= 10) {
+            affiche.append("10¢, ")
+              monnaieARendre -= 10;
+          } else if (monnaieARendre >= 5){
+              affiche.append("5¢, ")
+              monnaieARendre -= 5;
+          }
+          }
+
+      }
+        
+     </script>
+ 
+   </form>
+ 
+ </body>
+</html>
